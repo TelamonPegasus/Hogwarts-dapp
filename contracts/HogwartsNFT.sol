@@ -10,7 +10,6 @@ contract HogwartsNFT is ERC721URIStorage, Ownable {
     mapping(address => uint256) public s_addressToHouse;
     mapping(address => bool) public hasMinted;
     mapping(address => string) public s_addressToName;
-    
     uint256 private s_tokenCounter;
 
     string[] internal houseTokenURIs = [
