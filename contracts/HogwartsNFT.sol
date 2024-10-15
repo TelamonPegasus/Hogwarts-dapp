@@ -30,4 +30,24 @@ contract HogwartsNFT is ERC721URIStorage, Ownable {
         return hasMinted[_user];
     }
 
+    function getHouseIndex(address _user) public view returns (uint256) {
+        return s_addressToHouse[_user];
+    }
+
+    function mintNFT(address recipient, uint256 house, string memory name) external onlyOwner {
+        require(!hasMinted[recipient], "You have already minted your house NFT"); // Ensure the address has not minted before
+
+        uint256 tokenId = s_tokenCounter;
+        _safeMint(recipient, tokenId);
+        _setTokenURI(tokenId, houseTokenURIs[house]);
+
+        s_addressToHouse[recipient] = house; //map house to address
+        s_addressToName[recipient] = name; // map name to address
+
+        s_tokenCounter += 1;
+        hasMinted[recipient] = true; // Mark the address as having minted an NFT
+
+        emit NftMinted(house, recipient, name);
+    }
+
 }
