@@ -14,7 +14,7 @@ contract HogwartsNFT is ERC721URIStorage, Ownable {
     uint256 private s_tokenCounter;
 
     string[] internal houseTokenURIs = [
-        "ipfs://QmXja2QBKsNW9qnw9kKfcm25rJTomwAVJUrXekYFJnVwbg/Gryffindor.json",
+        "ipfs://QmXja2QBKsNW9qnw9kKfcm25rJTomwAVJUrXekYFJnVwbg/Gryffindor.json",-
         "ipfs://QmXja2QBKsNW9qnw9kKfcm25rJTomwAVJUrXekYFJnVwbg/Hufflepuff.json",
         "ipfs://QmXja2QBKsNW9qnw9kKfcm25rJTomwAVJUrXekYFJnVwbg/Ravenclaw.json",
         "ipfs://QmXja2QBKsNW9qnw9kKfcm25rJTomwAVJUrXekYFJnVwbg/Slytherin.json"
@@ -22,7 +22,7 @@ contract HogwartsNFT is ERC721URIStorage, Ownable {
 
     event NftMinted(uint256 house, address minter, string name);
 
-    constructor() ERC721("Hogwarts NFT", "HP") {
+    constructor() ERC721("Hogwarts NFT", "HOG") ownable {
         s_tokenCounter = 0;
     }
 
